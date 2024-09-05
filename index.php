@@ -16,11 +16,16 @@ use Timber\Timber;
 $templates = array('templates/index.twig');
 
 if (is_home()) {
-	array_unshift( $templates, 'templates/front-page.twig', 'templates/home.twig' );
+	array_unshift($templates, 'templates/front-page.twig', 'templates/home.twig');
 }
 
-$context = Timber::context([
-	'foo'   => 'bar',
-]);
+// Récupérer le contexte global sans argument
+$context = Timber::context();
 
+// Ajouter des variables supplémentaires au contexte si nécessaire
+$context['foo'] = 'bar';
+$context['posts'] = new Timber\PostQuery(); // Récupérer les posts
+
+// Rendu du modèle Twig avec le contexte
 Timber::render($templates, $context);
+

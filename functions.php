@@ -15,6 +15,7 @@ use Timber\Timber;
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/src/StarterSite.php';
 
-Timber::init();
+// Supprimer Timber::init() si Timber est déjà géré par Composer.
 
+// Initialiser le site en utilisant ta classe personnalisée.
 new StarterSite();
